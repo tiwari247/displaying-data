@@ -1,0 +1,30 @@
+<script>
+    console.log("hello");
+</script>
+<h1>{{ title }}</h1>
+<h2>My Favorite Hero is : {{ myHero.name }}</h2>
+
+<input type="text" #filInp (input)="onFilter(filInp.value)" placeholder="check if isHuman?">
+
+<input type="text" #inp (keyup.enter)="onAdd(inp.value)" placeholder="enter hero...">
+<button (click)="onAdd(inp.value)">Add</button>
+<!-- <div *ngIf="filInp.value"> -->
+<ul>
+    <li *ngFor="let hero of heroes|filter:filInp.value">
+        {{ hero.name }}
+    </li>
+</ul>
+<!-- </div> -->
+
+<p *ngIf="heroes.length > 3">There're many Heroes</p>
+
+<hr>
+<h2>Custom Attribute Directive</h2>
+<div>
+    <h3>Pick a highlight color</h3>
+    <input type="radio" (click)="color='red'" name="color">Red <br>
+    <input type="radio" (click)="color='green'" name="color">Green <br>
+    <input type="radio" (click)="color='blue'" name="color">Blue <br>
+</div>
+<p [appHighlight]="color" defaultColor="grey">highlight!</p>
+<hr>
